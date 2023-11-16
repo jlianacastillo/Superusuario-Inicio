@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Log-in{% endblock %}
+
+<style>
+
+  body {
+    background-color: #f4f4f4;
+  }
+
+  .columns {
+    margin-top: 50px;
+  }
+
+  .column {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    color: #3273dc;
+  }
+
+  form {
+    margin-top: 20px;
+  }
+
+  .button.is-success {
+    background-color: #3273dc;
+    color: #ffffff;
+  }
+
+  .button.is-success:hover {
+    background-color: #205493;
+  }
+</style>
+
+<div class="columns">
+  {% block content %}
+    <div class="column is-half">
+      <p>Realizado por Juliana Castillo</p>
+      <p>Asignatura de Linea de Profundizacion II</p>
+      <h1 class="is-size-3 mt-3">Bienvenido a la sesion de inicio</h1>
+      <p class="is-size-5">Por favor, ingresa tu usuario</p>
+      <br>
+      <form method="post">
+        {% for field in form %}
+          <div class="field">
+            <label class="label">{{ field.label_tag }}</label>
+            <div class="control">
+              {{ field }}
+            </div>
+          </div>
+        {% endfor %}
+        {% csrf_token %}
+        <div class="control">
+          <input type="submit" value="Log-in" class="button is-success mt-2">
+        </div>
+      </form>
+    </div>
+  {% endblock %}
+</div>
